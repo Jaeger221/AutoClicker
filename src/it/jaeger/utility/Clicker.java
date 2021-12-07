@@ -7,7 +7,6 @@ import java.awt.event.*;
 public class Clicker extends JFrame implements ActionListener, KeyListener
 {
 	private JPanel panelAll = new JPanel();
-
 	private JTextField posx = new JTextField();
 	private JTextField posy = new JTextField();
 	private JTextField time = new JTextField();
@@ -17,11 +16,10 @@ public class Clicker extends JFrame implements ActionListener, KeyListener
 	private JLabel labelPosy = new JLabel("Pos y");
 	private JLabel labelTime = new JLabel("Time (ms)");
 	private JLabel status = new JLabel("Status: idle");
-
 	private JButton start = new JButton("Start");
 	private JButton stop = new JButton("Stop");
 	private JButton sync = new JButton("Sync");
-
+	
 	private boolean running = true;
 
 	public Clicker() {
@@ -44,8 +42,6 @@ public class Clicker extends JFrame implements ActionListener, KeyListener
 
 		sync.addKeyListener(this);
 
-		getContentPane().add(panelAll);
-
 		posx.setBorder(BorderFactory.createLineBorder(Color.black));
 		posy.setBorder(BorderFactory.createLineBorder(Color.black));
 		time.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -56,6 +52,7 @@ public class Clicker extends JFrame implements ActionListener, KeyListener
 		sync.setBackground(Color.WHITE);
 		sync.addActionListener(this);
 
+		getContentPane().add(panelAll);
 		updatePos();
 	}
 
@@ -104,21 +101,20 @@ public class Clicker extends JFrame implements ActionListener, KeyListener
 			}
 		});
 		
-		if(p.equals("start")) {
+		status.setText(p);
+		if(p.equals("Start")) {
 			running = true;
 			updateStatus();
-			JOptionPane.showMessageDialog(null,"java is fun","Title",1); //remove
 			thread.start();
 		}
 
-		if(p.equals("stop")) {
-			JOptionPane.showMessageDialog(null,"java is fun","Title",1); //remove
+		if(p.equals("Stop")) {
 			running = false;
 			updateStatus();
 		}
 
-		if(p.equals("sync"))
-			JOptionPane.showMessageDialog(null,"java is fun","Title",1); //remove
+		if(p.equals("Sync"))
+			JOptionPane.showMessageDialog(null,"Premi 's' per immettere automaticamente la posizione","Tutorial",1);
 	}
 
 	@Override
@@ -134,13 +130,11 @@ public class Clicker extends JFrame implements ActionListener, KeyListener
 		int keyCode = e.getKeyCode();
 		
 		if(keyCode == 80) {
-			JOptionPane.showMessageDialog(null,"java is fun","Title",1); //remove
 			running = false;
 			updateStatus();
 		}
 
 		if(keyCode == 83) {
-			JOptionPane.showMessageDialog(null,"java is fun","Title",1); //remove
 			posx.setText(MouseInfo.getPointerInfo().getLocation().x + "");
 			posy.setText(MouseInfo.getPointerInfo().getLocation().y + "");
 		}
