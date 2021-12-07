@@ -114,7 +114,7 @@ public class Clicker extends JFrame implements ActionListener, KeyListener
 		}
 
 		if(p.equals("Sync"))
-			JOptionPane.showMessageDialog(null,"Premi 's' per immettere automaticamente la posizione","Tutorial",1);
+			status.setText("Press -s");
 	}
 
 	@Override
